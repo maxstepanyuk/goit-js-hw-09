@@ -73,6 +73,17 @@ const imagesMarkup = images.map(img => renderImg(img)).join('');
 
 gallery.insertAdjacentHTML('afterbegin', imagesMarkup);
 
+const gallerySimpleLightboxOptions = {
+  captionsData: 'alt',
+  captionDelay: 250,
+  className: "lightbox-custom"
+};
+
+const gallerySimpleLightbox = new SimpleLightbox(
+  '.gallery .gallery-item .gallery-link',
+  gallerySimpleLightboxOptions
+);
+
 function renderImg({ original, description, preview }) {
   return ` 
   <li class="gallery-item">
