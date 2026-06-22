@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.gallery-item {
+  list-style-type: none;
+
+  transition-property: transform;
+  transition-duration: 200ms;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+.gallery-image {
+  display: block;
+  width: 360px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.lightbox-custom {
+  background: rgba(46, 47, 66, 0.8);
+}
