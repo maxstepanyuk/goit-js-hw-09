@@ -28,12 +28,26 @@
     </header>
 
     <main>
-      <section class="vite">
+      <section class="section title">
         <div class="container">
           <h1 class="main-title">Form</h1>
         </div>
       </section>
-      <section></section>
+      <section class="section form-section">
+        <div class="container">
+          <form class="feedback-form" autocomplete="off">
+            <label>
+              Email
+              <input type="email" name="email" autofocus />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="8"></textarea>
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="./js/2-form.js"></script>
