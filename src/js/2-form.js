@@ -23,16 +23,16 @@ form.addEventListener('submit', event => {
   event.preventDefault();
   const target = event.target;
 
-  const formData = Object.fromEntries(new FormData(form));
+  const submittedData = Object.fromEntries(new FormData(form));
 
-  for (const key in formData) {
+  for (const key in submittedData) {
     if (form.elements[key].value === '') {
       alert('Fill please all fields');
       return;
     }
   }
 
-  console.log(formData);
+  console.log(submittedData);
   reset();
 });
 
@@ -46,7 +46,4 @@ function populateFormOnLoad() {
 function reset() {
   localStorage.removeItem(LS_FORM_KEY);
   form.reset();
-  for (const key in formData) {
-    form.elements[key].value = '';
-  }
 }
