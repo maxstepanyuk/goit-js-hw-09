@@ -13,7 +13,7 @@ form.addEventListener('input', event => {
   }
 
   const currentKey = target.name;
-  const currentValue = target.value;
+  const currentValue = target.value.trim();
 
   formData[currentKey] = currentValue;
   localStorage.setItem(LS_FORM_KEY, JSON.stringify(formData));
@@ -22,28 +22,39 @@ form.addEventListener('input', event => {
 form.addEventListener('submit', event => {
   event.preventDefault();
   const target = event.target;
-
-  const submittedData = Object.fromEntries(new FormData(form));
+  const submittedData = Object.fromEntries(new FormData(target));
 
   for (const key in submittedData) {
-    if (form.elements[key].value === '') {
+    if (submittedData[key].trim() === '') {
       alert('Fill please all fields');
       return;
     }
   }
 
-  console.log(submittedData);
+  for (const key in submittedData) {
+    formData[key] = submittedData[key].trim();
+  }
+
+  console.log(formData);
   reset();
 });
 
 function populateFormOnLoad() {
   const lsFormData = JSON.parse(localStorage.getItem(LS_FORM_KEY));
+  if (lsFormData === null) {
+    return;
+  }
+
   for (const key in lsFormData) {
-    form.elements[key].value = lsFormData[key];
+    formData[key] = lsFormData[key] || '';
+    form.elements[key].value = lsFormData[key] || '';
   }
 }
 
 function reset() {
   localStorage.removeItem(LS_FORM_KEY);
   form.reset();
+  for (const key in formData) {
+    formData[key] = '';
+  }
 }
