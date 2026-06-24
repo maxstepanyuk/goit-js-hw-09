@@ -87,10 +87,10 @@ const gallerySimpleLightbox = new SimpleLightbox(
 function renderImg({ original, description, preview }) {
   return ` 
   <li class="gallery-item">
-    <a class="gallery-link" href="${original || preview}">
+    <a class="gallery-link" href="${original}">
       <img
         class="gallery-image"
-        src="${preview || original}"
+        src="${preview}"
         alt="${description}"
       />
     </a>
